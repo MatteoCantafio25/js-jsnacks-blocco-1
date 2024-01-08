@@ -1,49 +1,39 @@
-//---------------------------------//
+//---------------------------------
 // MI ASSICURO CHE IL FOGLIO JS COMUNICHI CON IL FOGLIO HTML
 
 console.log("JS OK");
 
-//---------------------------------//
-// CREO UNA COSTANTE PER L'ARRAY
+//---------------------------------
+// CREO 2 PROMPT PER RICEVERE DALL'UTENTE LA SUA SCELTA
 
-const fridge = ['banana', 'mela', 'pera', 'ciliegia', 'arancia', 'mandarino', 'cocomero', 'limone', 'fragola'];
+const tot = parseInt(prompt("Quanti numeri vuoi avere?"));
+const minLenght = parseInt(prompt("Quanti elementi vuoi stampare?"));
 
-
-//---------------------------------//
-//AGGIUNGIAMO UN ELEMENTO ALL'ARRAY
-
-fridge.push("pesca");
-
-
-//---------------------------------//
-//CREIAMO UN FLAG
-let hasWatermelon = false;
-
-//---------------------------------//
-// FACCIO CONTROLLARE TUTTI GLI ELEMENTI DELL'ARRAY
-
-for (let i = 0; i < fridge.length && !hasWatermelon; i++) {
-
-    //----------------//
-    // SE IL COCOMERO C'E'STAMPO IN PAGINA...
-
-    if (fridge[i] === "cocomero") {
-        hasWatermelon = true
-    }
-}
-
-// SE IL COCOMERO NON C'E'STAMPO IN PAGINA...
-
-let message;
-
-if (hasWatermelon) {
-    message = "Trovato! Devo solo preparare il cocktail."
+//! Validazione 
+if (isNaN(minLenght) || isNaN(tot) || minLenght < 0 || tot > 100 || tot < minLenght || minLenght >= tot) {
+    alert("Il numero di elementi da stampare non è valido");
 } else {
-    message = "Oh no, devo uscire a comprare il cocomero!"
+
+    // CREO UN ARRAY VUOTO NEL QUALE POI DOVR0' AGGIUNGERE TOT NUMERI DATI DALL'UTENTE
+
+    const numbers = [];
+
+    //DECIDO QUANTE VOLTE SI DEVE RIPETERE IL CICLO IN BASE ALLA SCELTA DELL'UTENTE
+
+    for (let i = 1; i <= tot; i++) {
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        numbers.push(randomNumber);
+    }
+
+    // STAMPO IN CONSOLE
+
+    console.log(numbers);
+
+    // CREO UNA COSTANTE MI PERMETTE DI PRENDERE GLI X NUMERI DALL'ARRAY PARTENDO DALLA FINE
+
+    const elementsToPrint = numbers.slice(-minLenght);
+
+    // STAMPO IN CONSOLE
+
+    console.log(elementsToPrint);
 }
-
-console.log(message);
-
-
-
-
